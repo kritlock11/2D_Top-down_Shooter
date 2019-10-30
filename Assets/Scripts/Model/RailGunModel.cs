@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Shooter_2D_test
 {
@@ -8,7 +9,9 @@ namespace Shooter_2D_test
         {
             base.Awake();
             _weaponType = WeaponType.Railgun;
+            Physics2D.queriesStartInColliders = false;
         }
+
 
         public override void Fire()
         {
@@ -18,6 +21,7 @@ namespace Shooter_2D_test
 
             for (int i = 0; i < bulletsPool.bullets.Count; i++)
             {
+
                 if (!bulletsPool.bullets[i].gameObject.activeInHierarchy)
                 {
                     bulletsPool.bullets[i].transform.position = _barrel.transform.position;
@@ -27,6 +31,7 @@ namespace Shooter_2D_test
                     bulletsPool.bullets[i].Rigidbody.AddForce(shootVector * _force);
                     break;
                 }
+
             }
 
             Clip.BulletsCount--;

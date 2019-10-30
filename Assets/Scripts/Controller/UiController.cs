@@ -63,12 +63,14 @@ namespace Shooter_2D_test
 
         void RefreshAmmoClip()
         {
-            UiManager.WeaponUiText.Text = _ammoSB.TextClearBuilder(Main.WeaponController.SelectedWeapon.Clip.BulletsCount, Main.WeaponController.SelectedWeapon.CountClip);
+            UiManager.WeaponUiText.Text = _ammoSB.TextClearBuilder
+                (Main.WeaponController.SelectedWeapon.Clip.BulletsCount, Main.WeaponController.SelectedWeapon.CountClip);
         }
 
         void RefreshSelectedWeaponText()
         {
-            UiManager.SelectedWeaponUiText.Text = _weaponSB.TextStringBuilder(Main.WeaponController.SelectedWeapon.gameObject.name);
+            UiManager.SelectedWeaponUiText.Text = _weaponSB.TextStringBuilder
+                (Main.WeaponController.SelectedWeapon.gameObject.name);
         }
 
         private void AimColor()

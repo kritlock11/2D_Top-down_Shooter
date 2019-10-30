@@ -54,8 +54,7 @@ namespace Shooter_2D_test
                     break;
 
                 case WeaponType.Railgun:
-                    //Bullet = Resources.Load<BaseBullet>("ParticlesPrefabs/Railgun");
-                    Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_railgun"); 
+                    Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_railgun");
                     break;
 
                 default:

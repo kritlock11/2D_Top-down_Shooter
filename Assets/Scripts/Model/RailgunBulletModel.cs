@@ -7,9 +7,15 @@ namespace Shooter_2D_test
 
         public BulletType Type = BulletType.GunBullet;
 
-        private void OnCollisionEnter2D(Collision2D coll)
+
+        private void OnEnable()
         {
-            if (coll.transform.GetComponent<BaseBullet>())
+            DestroyBullet(0.4f);
+        }
+
+        private void OnTriggerEnter2D(Collider2D coll)
+        {
+            if (coll.transform.GetComponent<BaseBullet>() || coll.transform.CompareTag("Player"))
             {
                 return;
             }
@@ -21,7 +27,7 @@ namespace Shooter_2D_test
                 Main.EnemyController.SetDamage(target, new CollisionInfo(_baseDamage));
             }
 
-            DestroyBullet();
+            DestroyBullet(0.4f);
         }
     }
 }
