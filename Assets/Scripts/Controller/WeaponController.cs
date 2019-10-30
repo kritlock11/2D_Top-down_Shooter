@@ -1,65 +1,51 @@
-﻿namespace Shooter_2D_test
+﻿using System;
+namespace Shooter_2D_test
 {
     public class WeaponController: BaseController
     {
-        private BaseWeapon SelectedWeapon;
+        private BaseWeapon _selectedWeapon;
+
+        public BaseWeapon SelectedWeapon { get => _selectedWeapon; set => _selectedWeapon = value; }
+
+        public event Action OnOn;
+        public event Action OnOff;
+        public event Action OnFire;
+        public event Action OnReload;
+
         public void On(BaseObjectScene weapon)
         {
-            SelectedWeapon = (BaseWeapon)weapon;
-            SelectedWeapon.IsVisible = true;
+            _selectedWeapon = (BaseWeapon)weapon;
+            _selectedWeapon.IsVisible = true;
 
-            UiManager.WeaponUiText.SetActive(true);
-            UiManager.SelectedWeaponUiText.SetActive(true);
-            UiManager.WeaponUiText.ShowData(SelectedWeapon.Clip.BulletsCount, SelectedWeapon.CountClip);
-            AimColor();
-            UiManager.SelectedWeaponUiText.Text = SelectedWeapon.gameObject.name;
+            OnOn?.Invoke();
         }
 
         public void Off()
         {
-            if (SelectedWeapon == null) return;
+            if (_selectedWeapon == null) return;
 
-            SelectedWeapon.IsVisible = false;
-            SelectedWeapon = null;
+            _selectedWeapon.IsVisible = false;
+            _selectedWeapon = null;
 
-            UiManager.WeaponUiText.SetActive(false);
-            UiManager.SelectedWeaponUiText.SetActive(false);
+            OnOff?.Invoke();
         }
 
         public void ReloadClip()
         {
-            if (SelectedWeapon == null) return;
+            if (_selectedWeapon == null) return;
 
-            SelectedWeapon.ReloadClip();
+            _selectedWeapon.ReloadClip();
 
-            UiManager.WeaponUiText.ShowData(SelectedWeapon.Clip.BulletsCount, SelectedWeapon.CountClip);
-            AimColor();
+            OnReload?.Invoke();
         }
 
         public void Fire()
         {
-            if (SelectedWeapon == null) return;
+            if (_selectedWeapon == null) return;
 
-            SelectedWeapon.Fire();
+            _selectedWeapon.Fire();
 
-            UiManager.WeaponUiText.ShowData(SelectedWeapon.Clip.BulletsCount, SelectedWeapon.CountClip);
-            AimColor();
-        }
-
-        private void AimColor()
-        {
-            if (SelectedWeapon.Clip.BulletsCount <= 5)
-            {
-                UiManager.WeaponUiText.Color = UnityEngine.Color.red;
-            }
-            if (SelectedWeapon.Clip.BulletsCount > 5 && SelectedWeapon.Clip.BulletsCount <= 10)
-            {
-                UiManager.WeaponUiText.Color = UnityEngine.Color.yellow;
-            }
-            if (SelectedWeapon.Clip.BulletsCount > 10 && SelectedWeapon.Clip.BulletsCount <= 40)
-            {
-                UiManager.WeaponUiText.Color = UnityEngine.Color.green;
-            }
+            OnFire?.Invoke();
         }
     }
 }

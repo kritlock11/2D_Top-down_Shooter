@@ -33,8 +33,8 @@ namespace Shooter_2D_test
 
         private bool Dist(Transform bot, Transform target)
         {
-            var dist = Vector2.Distance(bot.position, target.position);
-            return dist <= ActiveDis;
+            var dist = (bot.position- target.position).sqrMagnitude; //TODO 
+            return dist <= ActiveDis* ActiveDis;
         }
     }
 }

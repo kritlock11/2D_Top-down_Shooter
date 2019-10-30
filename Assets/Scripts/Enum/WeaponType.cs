@@ -8,5 +8,8 @@
         GranadeGun = 16,
         MineGun = 32,
         BolaGun = 64,
+        TurrtGun = 128,
+        Railgun = 256,
+        GunOnTurret = 512
     }
 }

@@ -49,7 +49,7 @@ namespace Shooter_2D_test
         }
 
         private ScoreUi _scoreUiUi;
-        public ScoreUi ScoreUiUi
+        public ScoreUi ScoreUi
         {
             get
             {

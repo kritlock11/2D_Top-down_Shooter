@@ -8,6 +8,10 @@ namespace Shooter_2D_test
 
         public void OnUpdate()
         {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Main.WeaponController.Fire();
+            }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Main.Inventory.GetWeapon(0);
@@ -28,9 +32,13 @@ namespace Shooter_2D_test
             {
                 Main.Inventory.GetWeapon(4);
             }
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                Main.WeaponController.Fire();
+                Main.Inventory.GetWeapon(5);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                Main.Inventory.GetWeapon(6);
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {

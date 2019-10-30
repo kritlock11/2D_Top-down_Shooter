@@ -45,6 +45,19 @@ namespace Shooter_2D_test
                     Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_bola");
                     break;
 
+                case WeaponType.TurrtGun:
+                    Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_turret");
+                    break;
+
+                case WeaponType.GunOnTurret:
+                    Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_gun");
+                    break;
+
+                case WeaponType.Railgun:
+                    //Bullet = Resources.Load<BaseBullet>("ParticlesPrefabs/Railgun");
+                    Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_railgun"); 
+                    break;
+
                 default:
                     Bullet = Resources.Load<BaseBullet>("AmmoPrefabs/Bullet_gun");
                     break;
@@ -60,7 +73,8 @@ namespace Shooter_2D_test
             ReloadClip();
         }
 
-        public abstract void Fire();
+        public virtual void Fire() { Fire(Vector2.zero); }
+        public virtual void Fire(Vector2 v2) { }
         protected void ReadyShoot() => _isReady = true;
         protected void AddClip(Clip clip) => _clips.Enqueue(clip);
 

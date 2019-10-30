@@ -12,6 +12,11 @@ namespace Shooter_2D_test
             _text = GetComponent<TextMeshProUGUI>();
         }
 
+        public string Text
+        {
+            set => _text.text = $"{value}";
+        }
+
         public Color Color
         {
             set => _text.color = value;

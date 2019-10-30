@@ -19,6 +19,8 @@ namespace Shooter_2D_test
         public PlayerController PlayerController { get; private set; }
         public SpawnerController SpawnerController { get; private set; }
         public CamShakeController CamShakeController { get; private set; }
+        public TurretBulletController TurretBulletController { get; private set; }
+        public UiController UiController { get; private set; }
         
 
 
@@ -60,6 +62,17 @@ namespace Shooter_2D_test
 
             CamShakeController = new CamShakeController();
             Inites.Add(CamShakeController);
+
+            TurretBulletController = new TurretBulletController();
+            Inites.Add(TurretBulletController);
+            Updates.Add(TurretBulletController);
+
+            UiController = new UiController();
+            Inites.Add(UiController);
+
+
+
+
         }
 
         private void Start()

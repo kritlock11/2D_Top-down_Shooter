@@ -8,6 +8,8 @@
         Rocket = 16,
         Granade = 32,
         Bola = 64,
-        Mine = 128
+        Mine = 128,
+        Railgun = 256,
+        Turrt = 512
     }
 }
